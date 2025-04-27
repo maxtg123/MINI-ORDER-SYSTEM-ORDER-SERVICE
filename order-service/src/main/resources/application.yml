@@ -1,0 +1,30 @@
+    server:
+        port: 8081
+
+    spring:
+        application:
+            name: order-service
+        datasource:
+            url: jdbc:mysql://localhost:3306/orderdb
+            username: root
+            password: phong123
+        jpa:
+            hibernate:
+                ddl-auto: update
+            show-sql: true
+        kafka:
+            bootstrap-servers: kafka:9092
+        zipkin:
+            base-url: http://zipkin:9411
+            enabled: true
+
+    management:
+        tracing:
+            sampling:
+                probability: 1.0
+        endpoints:
+            web:
+                exposure:
+                    include: "*"
+
+
