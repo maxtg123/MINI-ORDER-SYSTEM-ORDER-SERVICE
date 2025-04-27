@@ -8,7 +8,7 @@ Docker Compose: Manages container orchestration.
 
 🔥 Architecture
 
-![Diagram](MINI-ORDER-SYSTEM-ORDER-SERVICE/Image/Diagram.png)
+![Diagram](./Image/Diagram.png)
 
 📊 Flow Explanation (based on diagram)
 
