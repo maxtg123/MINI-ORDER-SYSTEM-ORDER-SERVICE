@@ -7,10 +7,12 @@ import com.example.inventory_service.event.InventoryReservedEvent;
 import com.example.inventory_service.model.Inventory;
 import com.example.inventory_service.repository.InventoryRepository;
 import lombok.RequiredArgsConstructor;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
+
 
 @Component
 @RequiredArgsConstructor

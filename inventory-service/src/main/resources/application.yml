@@ -1,23 +1,80 @@
+#server:
+#  port: 8082
+#
+#spring:
+#  application:
+#    name: inventory-service
+#
+#  datasource:
+#    url: jdbc:mysql://mysql:3306/inventory_db
+#    username: root
+#    password: phong123
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+##  kafka:
+##    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+##    bootstrap-servers: localhost:9092
+#  kafka:
+#    bootstrap-servers: kafka:9092
+#  zipkin:
+#    base-url: http://zipkin:9411
+#    enabled: true
+#
+#  cloud:
+#    config:
+#      enabled: false
+#
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+
+
+
 server:
   port: 8082
 
 spring:
+  application:
+    name: inventory-service
   datasource:
-    url: jdbc:mysql://localhost:3306/inventory_db
+    url: jdbc:mysql://mysql:3306/inventory_db
     username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
+    password: phong123
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: kafka:9092
+    consumer:
+      group-id: inventoryGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  zipkin:
+    base-url: http://zipkin:9411
+    enabled: true
 
   cloud:
     config:
       enabled: false
-    import-check:
-      enabled: false
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: "*"
