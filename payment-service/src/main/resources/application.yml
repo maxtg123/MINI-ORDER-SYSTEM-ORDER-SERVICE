@@ -1,0 +1,35 @@
+server:
+  port: 8083  # nên là 8083 để tránh trùng với order và inventory
+
+spring:
+  application:
+    name: payment-service
+
+  datasource:
+    url: jdbc:mysql://mysql:3306/payment_db
+    username: root
+    password: phong123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  kafka:
+    bootstrap-servers: kafka:9092
+
+spring.kafka:
+  consumer:
+    bootstrap-servers: ${spring.kafka.bootstrap-servers}
+    group-id: payment-group
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
+  producer:
+    bootstrap-servers: ${spring.kafka.bootstrap-servers}
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
