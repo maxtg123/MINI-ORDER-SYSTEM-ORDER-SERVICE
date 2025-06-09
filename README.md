@@ -160,5 +160,5 @@ Distributed Tracing using Zipkin
 
 Dockerizing Microservices Architecture
 
-Happy coding! 🎉
+
 
